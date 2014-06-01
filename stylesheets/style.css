@@ -1,0 +1,31 @@
+body {
+  padding: 2em;
+  background: #f2f2f2;
+}
+
+h1 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.youtube-modal-wrapper {
+  border: red 1px solid;
+  position: fixed;
+  z-index: 999999999;
+  height: 300px;
+  width: 300px;
+  top: 50%;
+  left: 50%;
+}
+.youtube-modal-wrapper .youtube-modal-inner {
+  border: green 2px solid;
+}
+
+#coverItUp {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
