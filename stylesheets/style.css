@@ -12,13 +12,24 @@ h1 {
   border: red 1px solid;
   position: fixed;
   z-index: 999999999;
-  height: 300px;
-  width: 300px;
   top: 50%;
   left: 50%;
+  width: 80%;
+  margin-left: -40%;
 }
-.youtube-modal-wrapper .youtube-modal-inner {
-  border: green 2px solid;
+
+.youtube-modal-inner {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+.youtube-modal-inner iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #coverItUp {

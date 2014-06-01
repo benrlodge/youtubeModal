@@ -8,18 +8,31 @@
   $ = jQuery;
 
   $.fn.youtubeModal = function(options) {
-    var addModal, closeModal, createModal, defaults, start;
+    var addModal, aspectRatio, closeModal, createModal, defaults, start, topPosition;
     defaults = {
       youtubeModal: '.youtubeModal',
-      modal: '.youtube-modal'
+      youtubeModalWrapper: '.youtube-modal-wrapper',
+      youtubeInner: '.youtube-modal-inner',
+      cover: '#coverItUp'
     };
     options = $.extend(defaults, options);
     start = function(item) {
       var modal, vid;
       vid = $(item).data('id');
       modal = createModal(vid);
-      return addModal(modal);
+      addModal(modal);
+      return topPosition();
     };
+    topPosition = function() {
+      var height, marginTop;
+      if ($(options.youtubeModalWrapper).length) {
+        height = $(options.youtubeModalWrapper).outerHeight();
+        marginTop = '-' + height / 2 + 'px';
+        log(marginTop);
+        return $(options.youtubeModalWrapper).css('margin-top', marginTop);
+      }
+    };
+    aspectRatio = function(ar) {};
     createModal = function(vid) {
       var iframe_dom, modal_dom;
       iframe_dom = "<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/'" + vid + "?rel=0&autoplay=1&loop=0&wmode=opaque\" marginwidth=\"0\" marginheight=\"0\">\n</iframe>";
@@ -33,8 +46,23 @@
     closeModal = function() {
       return log('close modal');
     };
-    return $('body').on('click', options.youtubeModal, function() {
+    $('body').on('click', options.youtubeModal, function() {
       return start(this);
+    });
+    $('body').on('click', options.cover, function() {
+      if ($(options.cover).length) {
+        return $(options.cover).remove();
+      }
+    });
+    $(window).resize(function() {
+      return topPosition();
+    });
+    return $(options.youtubeModal).each(function() {
+      var ar, ht, wt;
+      ht = $(this).data('height');
+      wt = $(this).data('width');
+      ar = ht / wt;
+      return $(this).attr('ar', ar);
     });
   };
 
