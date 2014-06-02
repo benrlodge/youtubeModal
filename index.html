@@ -41,11 +41,15 @@
 
 		$(document).ready(function(){
 			
-			$('body').youtubeModal({
-				link : '.youtubeModal'
-
+			$('#video1').youtubeModal({
+				activate: '#video1',
+				width: '80%'
 			});
 
+			$('#video2').youtubeModal({
+				activate: '#video2',
+				width: '50%'
+			});
 
 		})
 
