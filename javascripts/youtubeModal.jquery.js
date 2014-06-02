@@ -11,6 +11,7 @@
     var addModal, closeModal, createModal, defaults, setPosition, start;
     defaults = {
       activate: '',
+      vid: '',
       youtubeModal: '.youtubeModal',
       youtubeModalWrapper: '.youtube-modal-wrapper',
       youtubeInner: '.youtube-modal-inner',
@@ -28,9 +29,10 @@
       return setPosition();
     });
     start = function(item) {
-      var modal, vid;
-      vid = $(item).data('id');
-      modal = createModal(vid);
+      var modal;
+      log('AND THE ID IS');
+      log(options.id);
+      modal = createModal();
       addModal(modal);
       return setPosition();
     };
@@ -52,9 +54,9 @@
         'margin-left': marginLeft
       });
     };
-    createModal = function(vid) {
+    createModal = function() {
       var iframe_dom;
-      iframe_dom = "<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/'" + vid + "?rel=0&autoplay=1&loop=0&wmode=opaque\" marginwidth=\"0\" marginheight=\"0\"></iframe>";
+      iframe_dom = "<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/" + options.vid + "?rel=0&autoplay=1&loop=0&wmode=opaque' marginwidth='0' marginheight='0'></iframe>";
       return " <div class='youtube-modal-wrapper'> \n	<div class='youtube-modal-inner'>\n		" + iframe_dom + "\n	</div>\n</div>";
     };
     addModal = function(modal) {
@@ -63,13 +65,16 @@
       $('body').append(cover + modal);
       return $(options.youtubeModalWrapper).css('width', options.width);
     };
-    return closeModal = function() {
-      log('close modal');
+    closeModal = function() {
       if ($(options.cover).length) {
         $(options.cover).remove();
       }
       return $(options.youtubeModalWrapper).remove();
     };
+    return this.each(function() {
+      options.activate = $(this).attr('id');
+      return options.vid = $(this).data('id');
+    });
   };
 
 }).call(this);

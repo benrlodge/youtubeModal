@@ -9,6 +9,7 @@ $ = jQuery
 $.fn.youtubeModal = (options) ->
 	defaults = 
 		activate: ''
+		vid: ''
 		youtubeModal: '.youtubeModal'
 		youtubeModalWrapper: '.youtube-modal-wrapper'
 		youtubeInner: '.youtube-modal-inner'
@@ -25,18 +26,18 @@ $.fn.youtubeModal = (options) ->
 
 
 	start = (item) ->
-		vid = $(item).data('id')		
-		modal = createModal(vid)
+		log 'AND THE ID IS'
+		log options.id
+		modal = createModal()
 		addModal(modal)
 		setPosition()
+
 
 
 
 	setPosition = () ->
 		
 		threshold = 100
-
-		
 
 		vpHeight = $(window).height()
 		vpWidth =  $(window).width() 
@@ -64,8 +65,8 @@ $.fn.youtubeModal = (options) ->
 
 
 
-	createModal = (vid) ->		
-		iframe_dom = """<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/'#{vid}?rel=0&autoplay=1&loop=0&wmode=opaque" marginwidth="0" marginheight="0"></iframe>"""
+	createModal = () ->		
+		iframe_dom = """<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/#{options.vid}?rel=0&autoplay=1&loop=0&wmode=opaque' marginwidth='0' marginheight='0'></iframe>"""
 		
 		return """ <div class='youtube-modal-wrapper'> 
 						<div class='youtube-modal-inner'>
@@ -82,7 +83,11 @@ $.fn.youtubeModal = (options) ->
 
 
 	closeModal = ->
-		log 'close modal'
 		$(options.cover).remove() if $(options.cover).length
 		$(options.youtubeModalWrapper).remove() 
 		
+
+
+	@each ->
+		options.activate = $(this).attr('id')
+		options.vid = $(this).data('id')
