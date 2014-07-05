@@ -11,7 +11,7 @@ Example:
 
 ```html
 
-<a href="#" id="video" class='youtubeModal' data-id="xEhaVhta7sI">Click Me, I dare ya. I double dog dare ya.</a>
+<a href="#" id="video" data-id="xEhaVhta7sI">Click Me, I dare ya. I double dog dare ya.</a>
 
 ```
 
