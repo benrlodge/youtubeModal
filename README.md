@@ -1,8 +1,11 @@
 ##A jQuery Modal plugin for youtube videos.
 
+### Demo
+
+[http://localhost:3000/apps/youtubeModal](http://localhost:3000/apps/youtubeModal)
+
 
 ### How to use: 
-
 
 Since the modal is activate by a link, set an id on that link, add the youtube id to the data-id attribute, then set the id of the link to the youtubeModal() plugin. That's all you need to get started.
 
