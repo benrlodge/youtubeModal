@@ -16,25 +16,26 @@
 
 	<h1>Youtube Modal jQuery Plugin Demo</h1>
 	<hr>
-	<ul>
-		<li> 
-			<a href="#" id="video1" class='youtubeModal' data-id="xEhaVhta7sI">Click Me, I dare ya</a>
-		</li>
-		<li>
-			<a href="#" id="video2" class='youtubeModal' data-id="D4yIh4Aa4nQ">I don't think you want to click me</a>
-		</li>
-	</ul>
+
+			<p>I autoplay and I'm pretty big: </p>
+			<a href="#" id='video1' class='youtubeModal' data-id="xEhaVhta7sI">
+				<img src="img/cat-vid-1.jpg">
+			</a>
+
+
+			<p>I don't autoplay, and I'm a little smaller:</p>
+			<a href="#" id='video2' class='youtubeModal' data-id="D4yIh4Aa4nQ">
+				<img src="img/cat-vid-2.jpg">
+			<do class=""></do></a>
 
 
 
 
 	
-	<script src="javascripts/jquery.js"></script>
-	
+	<script src="javascripts/jquery.js"></script>	
 	<script src="javascripts/youtubeModal.jquery.js"></script>
 
 	
-
 
 
 	<script>
@@ -42,13 +43,11 @@
 		$(document).ready(function(){
 			
 			$('#video1').youtubeModal({
-				activate: '#video1',
 				width: '80%'
 			});
 
 			$('#video2').youtubeModal({
-				activate: '#video2',
-				width: '50%'
+				width: '60%'
 			});
 
 		})

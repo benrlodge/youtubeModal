@@ -1,63 +1,51 @@
 (function() {
   var $, log;
 
+  $ = jQuery;
+
   log = function(m) {
     return console.log(m);
   };
 
-  $ = jQuery;
-
   $.fn.youtubeModal = function(options) {
     var addModal, closeModal, createModal, defaults, setPosition, start;
     defaults = {
-      activate: '',
       vid: '',
-      youtubeModal: '.youtubeModal',
       youtubeModalWrapper: '.youtube-modal-wrapper',
       youtubeInner: '.youtube-modal-inner',
       cover: '#coverItUp',
-      width: '80%'
+      width: '80%',
+      autoplay: true
     };
     options = $.extend(defaults, options);
-    $('body').on('click', options.activate, function() {
-      return start(this);
-    });
-    $('body').on('click', options.cover, function() {
-      return closeModal();
-    });
-    $(window).resize(function() {
-      return setPosition();
-    });
+    createModal = function() {
+      var autoplay, iframe_dom;
+      if (options.autoplay) {
+        autoplay = 1;
+      } else {
+        autoplay = 0;
+      }
+      iframe_dom = "<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/" + options.vid + "?rel=0&autoplay=" + autoplay + "&wmode=opaque' marginwidth='0' marginheight='0'></iframe>";
+      return " <div class='youtube-modal-wrapper'> \n	<div class='youtube-modal-inner'>\n		" + iframe_dom + "\n	</div>\n</div>";
+    };
     start = function(item) {
       var modal;
-      log('AND THE ID IS');
-      log(options.id);
       modal = createModal();
       addModal(modal);
       return setPosition();
     };
     setPosition = function() {
-      var height, marginLeft, marginTop, threshold, vpHeight, vpWidth, width;
-      threshold = 100;
+      var height, marginLeft, marginTop, vpHeight, vpWidth, width;
       vpHeight = $(window).height();
       vpWidth = $(window).width();
       height = $(options.youtubeModalWrapper).outerHeight();
       width = $(options.youtubeModalWrapper).outerWidth();
-      log(width);
-      if ((height + threshold) > vpHeight) {
-        log('oh shit we are too tall');
-      }
       marginTop = '-' + height / 2 + 'px';
       marginLeft = '-' + width / 2 + 'px';
       return $(options.youtubeModalWrapper).css({
         'margin-top': marginTop,
         'margin-left': marginLeft
       });
-    };
-    createModal = function() {
-      var iframe_dom;
-      iframe_dom = "<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/" + options.vid + "?rel=0&autoplay=1&loop=0&wmode=opaque' marginwidth='0' marginheight='0'></iframe>";
-      return " <div class='youtube-modal-wrapper'> \n	<div class='youtube-modal-inner'>\n		" + iframe_dom + "\n	</div>\n</div>";
     };
     addModal = function(modal) {
       var cover;
@@ -72,8 +60,18 @@
       return $(options.youtubeModalWrapper).remove();
     };
     return this.each(function() {
-      options.activate = $(this).attr('id');
-      return options.vid = $(this).data('id');
+      var thisVid;
+      thisVid = '#' + $(this).attr('id');
+      options.vid = $(this).data('id');
+      $('body').on('click', thisVid, function() {
+        return start(this);
+      });
+      $('body').on('click', options.cover, function() {
+        return closeModal();
+      });
+      return $(window).resize(function() {
+        return setPosition();
+      });
     });
   };
 
