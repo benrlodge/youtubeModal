@@ -8,27 +8,75 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Youtube Modal jQuery Plugin Demo</title>
 
-	<link rel="stylesheet" href="stylesheets/style.css">
-	
+	<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="stylesheets/youtubeModal.css">
+
+	<style>
+
+		body{
+			padding: 2em;
+			background: #f2f2f2;
+			font-family: sans-serif;
+			text-align: center;
+		}
+
+		h1{
+			font-size: 42px;
+			font-family: 'Poiret One', sans-serif;
+		}
+
+		.container {
+			max-width: 595px;
+			margin: 0 auto;
+		}
+
+		.container ul{
+			padding: 0;
+		}
+
+		.container li{
+				list-style: none;
+				display: inline-block;
+				padding: 20px;
+		}
+			
+	</style>
+
 
 </head>
 <body>
 
-	<h1>Youtube Modal jQuery Plugin Demo</h1>
+	<header>
+		<h1>Youtube Modal jQuery Plugin Demo</h1>
+		<p> Get the code on <a href="https://github.com/benrlodge/youtubeModal">github</a> </p>
+	</header>
+
 	<hr>
 
-			<p>I autoplay and I'm pretty big: </p>
-			<a href="#" id='video1' class='youtubeModal' data-id="xEhaVhta7sI">
-				<img src="img/cat-vid-1.jpg">
-			</a>
+		<div class='container'>
 
+			<ul>
+				<li>
+					<p>I autoplay and I'm pretty big: </p>
+					<a href="#" id='video1' class='youtubeModal' data-id="xEhaVhta7sI">
+						<img src="img/cat-vid-1.jpg">
+					</a>
+				</li>
 
-			<p>I don't autoplay, and I'm a little smaller:</p>
-			<a href="#" id='video2' class='youtubeModal' data-id="D4yIh4Aa4nQ">
-				<img src="img/cat-vid-2.jpg">
-			<do class=""></do></a>
+				<li>
+					<p>I don't autoplay, I'm a little smaller:</p>
+					<a href="#" id='video2' class='youtubeModal' data-id="D4yIh4Aa4nQ">
+						<img src="img/cat-vid-2.jpg">
+					<do class=""></do></a>
+				</li>
+			</ul>
 
+			<h4> Why it's good: </h4>
+			<p>Easy to setup, responsive, and it has funny cats in the demo.</p>
 
+		</div>
+
+	
 
 
 	
