@@ -2,7 +2,7 @@
 
 ### Demo
 
-[http://www.benrlodge.com/apps/youtubeModal](http://www.benrlodge.com/apps/youtubeModal)
+[http://benrlodge.github.io/youtubeModal/](http://benrlodge.github.io/youtubeModal/)
 
 
 ### How to use: 
