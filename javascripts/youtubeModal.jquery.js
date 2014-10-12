@@ -15,7 +15,8 @@
       youtubeInner: '.youtube-modal-inner',
       cover: '#coverItUp',
       width: '80%',
-      autoplay: true
+      autoplay: true,
+      closeBtn: '.youtube-modal__close-btn'
     };
     options = $.extend(defaults, options);
     createModal = function() {
@@ -26,7 +27,7 @@
         autoplay = 0;
       }
       iframe_dom = "<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/" + options.vid + "?rel=0&autoplay=" + autoplay + "&wmode=opaque' marginwidth='0' marginheight='0'></iframe>";
-      return " <div class='youtube-modal-wrapper'> \n	<div class='youtube-modal-inner'>\n		" + iframe_dom + "\n	</div>\n</div>";
+      return " <div class='youtube-modal-wrapper'> \n	<img class='youtube-modal__close-btn' src=\"img/close-icon.png\">\n	<div class='youtube-modal-inner'>\n		" + iframe_dom + "\n	</div>\n</div>";
     };
     start = function(item) {
       var modal;
@@ -67,6 +68,9 @@
         return start(this);
       });
       $('body').on('click', options.cover, function() {
+        return closeModal();
+      });
+      $('body').on('click', options.closeBtn, function() {
         return closeModal();
       });
       return $(window).resize(function() {

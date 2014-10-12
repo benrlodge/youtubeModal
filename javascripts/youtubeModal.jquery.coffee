@@ -10,16 +10,18 @@ $.fn.youtubeModal = (options) ->
 		cover: '#coverItUp'
 		width: '80%'
 		autoplay: true
+		closeBtn: '.youtube-modal__close-btn'
 
+	
 	options = $.extend(defaults, options)
 	
-
 	createModal = () ->		
 		if options.autoplay then autoplay = 1 else autoplay = 0
 
 		iframe_dom = """<iframe frameborder='0' allowfullscreen='' src='http://www.youtube.com/embed/#{options.vid}?rel=0&autoplay=#{autoplay}&wmode=opaque' marginwidth='0' marginheight='0'></iframe>"""
 		
 		return """ <div class='youtube-modal-wrapper'> 
+						<img class='youtube-modal__close-btn' src="img/close-icon.png">
 						<div class='youtube-modal-inner'>
 							#{iframe_dom}
 						</div>
@@ -59,6 +61,7 @@ $.fn.youtubeModal = (options) ->
 
 		$('body').on 'click', thisVid, -> start(this)
 		$('body').on 'click', options.cover, -> closeModal()
+		$('body').on 'click', options.closeBtn, -> closeModal()
 		$(window).resize -> setPosition()
 
 
